@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Botón Esquivadizo</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  #container {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin: 100px auto;
+    border: 2px solid #ccc;
+    padding: 20px;
+  }
+  #btnNo {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    transition: top 0.5s, left 0.5s;
+  }
+</style>
+</head>
+<body>
+<div id="container">
+  <p>¿Me perdonas?</p>
+  <button id="btnSi">Sí</button>
+  <button id="btnNo">No</button>
+</div>
+
+<script>
+  const btnNo = document.getElementById('btnNo');
+  const container = document.getElementById('container');
+
+  btnNo.addEventListener('touchstart', () => {
+    const containerRect = container.getBoundingClientRect();
+    const newX = Math.random() * (containerRect.width - btnNo.offsetWidth);
+    const newY = Math.random() * (containerRect.height - btnNo.offsetHeight);
+    btnNo.style.left = newX + 'px';
+    btnNo.style.top = newY + 'px';
+  });
+</script>
+</body>
+</html>
